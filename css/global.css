@@ -1,0 +1,39 @@
+﻿html,body,body div.pofolArea{height:100% !important;}
+
+body{font-family: 'Gmarket Sans';}
+div[class*=Area] h2{font-size: 30px; font-weight:700; margin-bottom:5%; padding-top: 6%; text-align: center;}
+section,.statArea{padding:0 0 20px 0;}
+
+/* div[class*=Area]{
+    background-color: white;
+    background-size:cover; background-position:center top; background-repeat:no-repeat;
+}
+.mainArea{background:url(../images/bg_main.jpg);}
+.aboutArea{background:url(../images/bg_about.jpg);}
+.pofolArea{background:url(../images/bg_pofol.jpg);}
+.statArea{background:url(../images/bg_stats.jpg);}
+.contactArea{background:url(../images/bg_contact.jpg);} */
+
+
+ 
+/*global Fin*/
+
+header{padding:0 5%; box-sizing:border-box; background-color: white; border-bottom: 1px solid #e4e4e4; position:fixed; left:0; top:0; width:100%;}
+header:after{content:''; display:block; clear:both; visibility:hidden;}
+header > *{float:left;}
+header h1{width:10%;}
+header h1 a{display:block; color:black;}
+header h1 a img{width: 40%;}
+header nav{width:90%; text-align:right; font-size: 20px; font-weight: 400; padding-top: 1.5%;}
+header nav ul{list-style:none;}
+header nav ul li{display:inline-block; margin-left:2%;}
+header nav ul li:first-child{margin-left:0;}
+header nav ul li a{display:block; color:black;}
+/*header Fin*/
+
+.thumbPager{list-style:none; display:block; width:60%; margin:0 auto; padding:0;}
+.thumbPager:after{content:''; visibility:hidden; display:block; clear:both;}
+.thumbPager li{float:left; width:25%;}   
+.thumbPager li img{width:100%;}     
+/*bxSlider User Set Fin*/
+

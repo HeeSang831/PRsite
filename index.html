@@ -1,0 +1,410 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hs</title>
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+    <script src="plugins/dark.js"></script>
+    <script src="js/responsive.min.js"></script>
+    <link href="css/import.css" rel="stylesheet" />
+    <link href="css/jquery.bxslider.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/jquery.scrollify.min.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    <script async src="https://unpkg.com/typer-dot-js@0.1.0/typer.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.scrollify({
+                section: ".resize",
+                sectionName: "section-name",
+                interstitialSection: "",
+                easing: "easeOutExpo",
+                scrollSpeed: 1100,
+                offset: 0,
+                scrollbars: false,
+                standardScrollElements: "",
+                setHeights: true,
+                overflowScroll: true,
+                before: function () { },
+                after: function () { },
+                afterResize: function () { },
+                afterRender: function () { }
+            });
+            $.scrollify.update();
+            $("header nav ul li a").removeClass("open");
+            var hashTagActive = "";
+            $(".scroll").click(function (event) {
+                if (hashTagActive != this.hash) {
+                    event.preventDefault();
+                    var dest = 0;
+                    if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
+                        dest = $(document).height() - $(window).height();
+                    } else {
+                        dest = $(this.hash).offset().top;
+                    }
+                    $('html,body').animate({
+                        scrollTop: dest
+                    }, 500, 'swing');
+                    hashTagActive = this.hash;
+                }
+            });
+
+            $('.bxslider').bxSlider({
+                //work method
+                mode: 'fade', // 'horizontal' : 좌,우 'vertical' : 상,하 'fade' : fade in, out
+                speed: 500, // m/s ex > 1000 = 1s
+                easing: 'ease-in-out', // 동작 가속도 css와 동일
+                startSlide: 0, // 시작시 로드될 이미지 (0부터시작)
+                preloadImages: 'visible', // "visible"은 보여질때 이미지를 로드, "all"로 설정하면 이미지가 모드 로드되야 작동.
+                randomStart: false, //시작시 랜덤으로 이미지 로드 여부 (boolean)
+                adaptiveHeight: false, //각 이미지의 높이에 따라 슬라이더 높이의 유동적 조절 여부
+                adaptiveHeightSpeed: 500, //adaptiveHeight 동작속도
+                video: false,//slide에 video 사용여부, 사용할 시에 plugins/jquery.fitvids.js include 필요
+                captions: false, // img 태그에 title 속성값을 사용할시, 그부분의 출력여부 단, css .bx-wrapper .bx-caption 부분 조절 필요
+
+                //responsive method
+                responsive: true,//반응형 지원 여부
+                touchEnabled: true,//터치스와이프 기능 사용여부
+                swipeThreshold: 50,//터치하여 스와이프 할때 변환 효과에 소모되는 시간 설정
+                oneToOneTouch: true, // fade 효과가 아닌 슬라이드는 손가락의 접지상태에 따라 슬라이드를 움직일수있다.
+                preventDefaultSwipeX: true, // onoToOneTouch 에서 true일 경우, 손가락을따라 x축으로 움직일지에 대한 여부
+                preventDefaultSwipeY: false, // onoToOneTouch 에서 true일 경우, 손가락을따라 y축으로 움직일지에 대한 여부
+
+                //control method
+                controls: true, // 좌,우 컨트롤 버튼 출력 여부
+                auto: false, // 자동 재생 활성화
+                autoStart: false, // 페이지 로드가 되면, 슬라이드의 자동시작 여부
+                autoHover: true, // 슬라이드 오버시 재생 중단 여부 (false: 오버무시) 
+                autoDelay: 0, // 자동 재생 전 대기 시간 설정
+                infiniteLoop: true,//마지막에 도달 했을시, 첫페이지로 갈 것인가 멈출것인가
+
+                //pager method
+                pager: false, //pager 인디케이터 출력여부
+                pagerType: 'full', // pager 타입 설정. full은 default, short 은 1/4 이런 형식의  출력
+                pagerCustom: '.thumbPager'  //pager를 커스터마이징 하여 적용
+            });
+        });
+
+        // $(window).scroll(function () {
+        //     if ($(document).scrollTop() > 1500) {	
+        //         AmCharts.makeChart("chartdiv", {
+        //             "type": "pie",
+        //             "theme": "dark",
+        //             "dataProvider": [{
+        //                 "Ability": "Speed",
+        //                 "stat": 40
+        //             }, {
+        //                 "Ability": "Accuracy",
+        //                 "stat": 20
+        //             }, {
+        //                 "Ability": "Challenge",
+        //                 "stat": 20
+        //             }, {
+        //                 "Ability": "Sociability",
+        //                 "stat": 20
+        //             }, {
+        //                 "Ability": "Propulsion",
+        //                 "stat": 10
+        //             }, {
+        //                 "Ability": "Creativity",
+        //                 "stat": 10
+        //             }],
+        //             "valueField": "stat",
+        //             "titleField": "Ability",
+        //             "startEffect": "elastic",
+        //             "startDuration": 2,
+        //             "labelRadius": 15,
+        //             "innerRadius": "50%",
+        //             "depth3D": 10,
+        //             "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+        //             "angle": 15,
+        //             "legend": {
+        //                 "position": "right"
+        //             },
+        //             "responsive": {
+        //                 "enabled": true
+        //             }
+        //         });
+        //         //chart Fin
+        //     }
+        // });
+
+    </script>
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="#homeSection" class="scroll">
+                <img src="images/logo.png">
+            </a>
+        </h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#homeSection" class="scroll">HOME</a>
+                </li>
+                <li>
+                    <a href="#aboutSection" class="scroll">ABOUT ME</a>
+                </li>
+                <li>
+                    <a href="#pofolSection" class="scroll">PORTFOLIO</a>
+                </li>
+                <li>
+                    <a href="#contactSection" class="scroll">CONTACT ME</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="homeArea resize" id="homeSection">
+        <section>
+            <div class="intro">
+                <h2>Web
+                    <span class="typer" id="main" data-words="Publisher." data-delay="120" data-deleteDelay="1200"></span>
+                    <span class="cursor" data-owner="main"></span>
+                </h2>
+                <p>welcome to H.S's Portfolio</p>
+            </div>
+            <div class="scroll_Icon">
+                <a>Scroll<span></span></a>
+            </div>
+        </section>
+    </div>
+
+    <div class="aboutArea resize" id="aboutSection">
+        <section>
+            <h2>ABOUT ME</h2>
+            <figure>
+                <img src="images/profile.jpg"/>
+            </figure>
+            <article>
+                <h3>PROFILE</h3>
+                <dl>
+                    <dt>심희상 / Shim Hee Sang</dt>
+                    <dd>1992.08.31</dd>
+                    <dd>html5, css3, JQ, JS, PhotoShop, Illustrator</dd>
+                    <dd>2017.11 ~ 2019.10 &nbsp; ㈜싸이오토 근무</dd>
+                    <dd>2019.06 ~ 2020.02 &nbsp; 인천SBS아카데미 웹퍼블리셔과정 수료</dd>
+                </dl>
+            </article>
+            <ul>
+                <li>
+                    <h4>HTML</h4>
+                    <dl>
+                        <dt><strong class="counter">90%</strong></dt>
+                        <dd>HTML 수치</dd>
+                    </dl>
+                </li>
+                <li>
+                    <h4>CSS</h4>
+                    <dl>
+                        <dt><strong class="counter">90%</strong></dt>
+                        <dd>CSS 수치</dd>
+                    </dl>
+                </li>
+                <li>
+                    <h4>JQuery</h4>
+                    <dl>                       
+                        <dt><strong class="counter">30%</strong></dt>
+                        <dd>JQuery 수치</dd>
+                    </dl>
+                </li>
+                <li>
+                    <h4>PHOTOSHOP</h4>
+                    <dl>
+                        <dt><strong class="counter">80%</strong></dt>
+                        <dd>CSS 수치</dd>
+                    </dl>
+                </li>
+                <li>
+                    <h4>ILLUSTRATION</h4>
+                    <dl>
+                        <dt><strong class="counter">80%</strong></dt>
+                        <dd>CSS 수치</dd>
+                    </dl>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="pofolArea resize" id="pofolSection">
+        <section>
+            <h2>PORTFOLIO</h2>
+            <ul class="bxslider">
+                <li>
+                    <figure>
+                        <img src="images/sample_PR1.png" alt="포폴요약" title="포폴제목 - 포폴설명" />
+                        <figcaption>
+                            <dl>
+                                <dt><strong>01</strong>Porsche 리뉴얼 페이지</dt>
+                                <dd>Porsche 사이트의 메인 페이지를 CSS3 기반으로 반응형 구조로 리뉴얼 해보았습니다.</dd>
+                                <dd>반응형 / HTML / CSS / JQuery</dd>
+                                <dd>제작기간 3주</dd>
+                                <a href="https://heesang831.github.io/Porsche/">Page</a>
+                                <a href="https://github.com/HeeSang831/Porsche">Github</a>
+                            </dl>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                        <img src="images/sample_PR2.png" alt="포폴요약" title="포폴제목 - 포폴설명" />
+                        <figcaption>
+                            <dl>
+                                <dt><strong>02</strong>HeyDealer 앱소개 페이지</dt>
+                                <dd>HeyDealer 어플을 소개하는 페이지를 CSS3 기반으로 반응형 구조로 제작 해보았습니다.</dd>
+                                <dd>반응형 / HTML / CSS / JQuery</dd>
+                                <dd>제작기간 3주</dd>
+                                <a href="https://heesang831.github.io/Heydealer/">Page</a>
+                                <a href="https://github.com/HeeSang831/Heydealer">Github</a>
+                            </dl>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+            <!-- <ul class="thumbPager">
+                <li>
+                    <a data-slide-index="0" href="#">
+                        <img src="images/sample_Thumb1.png" alt="포폴제목 으로 이동합니다." />
+                    </a>
+                </li>
+                <li>
+                    <a data-slide-index="1" href="#">
+                        <img src="images/sample_Thumb2.png" alt="포폴제목 으로 이동합니다." />
+                    </a>
+                </li>
+                <li>
+                    <a data-slide-index="2" href="#">
+                        <img src="images/sample_Thumb3.png" alt="포폴제목 으로 이동합니다." />
+                    </a>
+                </li>
+                <li>
+                    <a data-slide-index="3" href="#">
+                        <img src="images/sample_Thumb4.png" alt="포폴제목 으로 이동합니다." />
+                    </a>
+                </li>
+            </ul> -->
+        </section>
+    </div>
+<!-- 
+    <div class="resize statArea" id="statSection">
+        <h2>STATS</h2>
+        <div id="chartdiv"></div>
+    </div> -->
+
+    <div class="resize contactArea" id="contactSection">
+        <section>
+            <h2>CONTACT ME</h2>
+            <div id="floating-panel">
+                <input type="button" value="로드뷰보기" onclick="toggleStreetView();"></input>
+            </div>
+            <div id="map"></div>
+            <dl>
+                <dt>Shim Hee Sang</dt>
+                <dd>Add.
+                    <a href="https://www.google.co.kr/maps/place/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%97%B0%EC%88%98%EA%B5%AC+%EB%8F%99%EC%B6%98%EB%8F%99+%EC%9B%90%EC%9D%B8%EC%9E%AC%EB%A1%9C+88/@37.4059596,126.6764483,17z/data=!3m1!4b1!4m5!3m4!1s0x357b775f5b0e9d31:0xdc7bc73af53661f7!8m2!3d37.4059554!4d126.678637?hl=ko">
+                        Woninjae-ro 88, Yeon-su, inchoen. 21974
+                    </a>
+                </dd>
+                <dd>Mail.
+                    <a href="mailto:keumbo92@gmail.com">keumbo92@gmail.com</a>
+                </dd>
+                <dd>
+                    Tel.
+                    <a href="tel:+821090964601">010-9096-4601</a>
+                </dd>
+                <dd><img src="images/KakaoTalk_QR.png" alt=""></dd>
+            </dl>
+        </section>
+        <script>
+            var panorama;
+            function initMap() {        
+            //map Load
+            var myLatLng = { lat: 37.405972, lng: 126.678688 };
+                var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: myLatLng,
+                streetViewControl: false
+                });
+            
+                //mapStyle
+                var styles = [
+                {
+                    stylers: [
+                        { hue: "#000000" },
+                        { saturation: -100 }
+                    ]
+                }, {
+                    featureType: "road",
+                    elementType: "geometry", //geometry.fill 지형지물 구조의 채우기, geometry.stroke 지형지물의 스트로크
+                    stylers: [
+                        { lightness: 0 },
+                        { visibility: "simplified" }
+                        //기본 on, off , simplified 가시성은 해당 지형지물에서 일부 스타일 지형지물을 제거
+                    ]
+                }, {
+                    featureType: "all",
+                    // 지형지물 all : 모든요소 표시, road : 길만 표시
+                    elementType: "labels",
+                    // featureType의 요소에 해당하는 라벨 표시, labels.icon : 지형지물 레이블 내 아이콘만, labels.text : 레이블의 텍스트만 선택, labels.text.fill 레이블의채우기만, label.text.stroke 레이블텍스트의 선만
+                    stylers: [
+                        { visibility: "on" }
+                        // 보여줄거냐 말거냐
+                    ]
+                }
+                ];
+    
+                map.setOptions({ styles: styles });
+    
+            //marker Set
+                var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Home'
+                });
+    
+            //streetView
+                panorama = map.getStreetView();
+                panorama.setPosition(myLatLng);
+                panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+                    heading: 265,
+                    pitch: 0
+                }));
+    
+            // To add the marker to the map, call setMap();
+                marker.setMap(map);
+    
+            // infoWindow
+                var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h1 id="firstHeading" class="firstHeading">Home</h1>' +
+                    '<div id="bodyContent">' +
+                    '<p>Woninjae-ro 88, Yeon-su, inchoen.21974</p>' +
+                    '</div>';
+    
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
+            }
+    
+            //streetView Toggle
+            function toggleStreetView() {
+                var toggle = panorama.getVisible();
+                if (toggle == false) {
+                    panorama.setVisible(true);
+                } else {
+                    panorama.setVisible(false);
+                }
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvTpNuT72U3uywHkUVAsNbqUTXQV8yAmk&signed_in=true&callback=initMap"></script>
+        
+    </div>
+</body>
+</html>
