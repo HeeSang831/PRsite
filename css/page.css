@@ -92,7 +92,7 @@
 
 .pofolArea section h2{color:black;}
 .pofolArea section ul li figure{position: relative;}
-.pofolArea section ul li figure img{margin-left: 3%;}
+.pofolArea section ul li figure img{margin-left: 10%;}
 .pofolArea section ul li figure figcaption{width: 45%; position: absolute; top: 20%; left: 50%;}
 .pofolArea section ul li figure figcaption dl dt{
     display: inline-block; width: 100%;
