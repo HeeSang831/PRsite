@@ -153,8 +153,8 @@
 }
 .contactArea section #floating-panel{
     position: absolute;
-    top: 24%;
-    left: 25.5%;
+    top: 30%;
+    left: 25.7%;
     z-index: 100;
     background-color: white;
     padding: 5px;
