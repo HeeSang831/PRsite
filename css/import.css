@@ -3,20 +3,6 @@
 @import url(page.css);
 
 @font-face {
-  font-family: 'Source Sans Pro';
-  font-weight: 200;
-  font-style: normal;
-  src: url('http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGFl_EbE5kujbLzdX6sKqH6g.eot');
-  src: url('http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGFl_EbE5kujbLzdX6sKqH6g.eot?#iefix') format('embedded-opentype'),
-       local('Source Sans Pro ExtraLight'),
-       local('Source-Sans-Pro-200'),
-       url('http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGIAPdqzPmKFFIYQ-46z3JxY.woff2') format('woff2'),
-       url('http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGC-IiwWNzQT_LXAtr-Ee9Pw.woff') format('woff'),
-       url('http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGEMbjGELOEJD5J8DUmxkO-A.ttf') format('truetype'),
-       url('http://fonts.gstatic.com/l/font?kit=toadOcfmlt9b38dHJxOBGFuXahqWP-sUHr1s2YHnD8g&skey=f7e766e587bd9f23&v=v9#SourceSansPro') format('svg');
-}
-
-@font-face {
   font-family: 'Gmarket Sans'; 
   font-weight: 300;
   font-style: normal;
